@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import controllers.PuzzleController;
+import controllers.QuitController;
 import entities.Puzzle;
 
 @SuppressWarnings({ "serial", "unused" })
@@ -25,6 +26,7 @@ public class HuarongDaoApp extends JFrame{
 	public static int BOARD_Y_SIZE = 600;
 	
 	protected PuzzleController puzzleControl;
+	protected QuitController quitControl;
 	public JFrame frame;
 	protected BoardBoundary board;
 	protected int numMoves;
@@ -38,12 +40,13 @@ public class HuarongDaoApp extends JFrame{
 		this.puzzle = puzzle;
 		this.board = new BoardBoundary(puzzle);
 		this.puzzleControl = new PuzzleController(puzzle, this);
+		quitControl = new QuitController(this);
 		numMoves = 0; //need to actually get this number from the puzzle object
 		
 		// initialize everything that is drawn to the screen
 		setBounds(200, 200, 1280, 720);
 		setTitle("Huarong Dao");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		contents = new JPanel();
 		contents.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contents.setLayout(null);
@@ -59,6 +62,14 @@ public class HuarongDaoApp extends JFrame{
 		
 		JButton quitButton = new JButton("Quit");
 		quitButton.setBounds(12, 186, 200, 70);
+		quitButton.addActionListener(new ActionListener()
+									{
+										@Override
+										public void actionPerformed(ActionEvent e) {
+											quitControl.quit();
+											board.repaint();
+										}
+									});
 		contents.add(quitButton);
 		
 		JLabel numMovesTitle = new JLabel("Number of Moves:");
