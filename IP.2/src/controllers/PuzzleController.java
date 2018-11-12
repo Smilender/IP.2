@@ -8,8 +8,8 @@ import entities.Tile;
 
 public class PuzzleController {
 
-	Puzzle puzzle;
-	HuarongDaoApp app;
+	protected Puzzle puzzle;
+	protected HuarongDaoApp app;
 	
 	public PuzzleController(Puzzle puzzle, HuarongDaoApp app)
 	{
@@ -67,6 +67,8 @@ public class PuzzleController {
 				if(canMove)
 				{
 					tile.setYPos(tile.getYPos() - 1);
+					puzzle.setNumMoves(puzzle.getNumMoves() + 1);
+					System.out.println(puzzle.getNumMoves());
 				}
 				break;
 			//direction left
@@ -93,6 +95,8 @@ public class PuzzleController {
 				if(canMove)
 				{
 					tile.setXPos(tile.getXPos() - 1);
+					puzzle.setNumMoves(puzzle.getNumMoves() + 1);
+					System.out.println(puzzle.getNumMoves());
 				}
 				break;
 			//direction down
@@ -123,6 +127,8 @@ public class PuzzleController {
 				if(canMove)
 				{
 					tile.setYPos(tile.getYPos() + 1);
+					puzzle.setNumMoves(puzzle.getNumMoves() + 1);
+					System.out.println(puzzle.getNumMoves());
 				}
 				break;
 			//direction right
@@ -149,6 +155,8 @@ public class PuzzleController {
 				if(canMove)
 				{
 					tile.setXPos(tile.getXPos() + 1);
+					puzzle.setNumMoves(puzzle.getNumMoves() + 1);
+					System.out.println(puzzle.getNumMoves());
 				}
 				break;
 			default:
@@ -157,60 +165,14 @@ public class PuzzleController {
 		}
 	}
 	
-	/*//takes a Tile and a direction (one of type char; 'u', 'l', 'd', 'r'), and checks if the Tile would collide with another piece or the wall 
-	public boolean isValidMove(Tile tile, char direction)
+	//getters and setters
+	public Puzzle getPuzzle()
 	{
-		boolean returner = false;
-		switch(direction)
-		{
-		case 'u':
-			if (tile.getYPos() == 0)
-			{
-				returner = false;
-			}
-			else
-			{
-				for(int i = 0; i < tile.getWidth(); i++)
-				{
-					if (puzzle.getTopLeftTileLocations)
-				}
-				
-				
-				
-				
-				
-				
-				for(int i = 0; i < tile.getWidth(); i++)
-				{
-					if (puzzle.getTopLeftTileLocations()[tile.getXPos() + i][tile.getYPos() - 1] == '*')
-					{
-						canMove = false;
-						break; //could maybe cause problems
-					}
-					else
-					{
-						canMove = true;
-					}
-				}
-			}
-			if(canMove)
-			{
-				tile.setYPos(tile.getYPos() - 1);
-			}
-			break;
-			break;
-		case 'l':
-			
-			break;
-		case 'd':
-			
-			break;
-		case 'r':
-			
-			break;
-		default:
-			returner = false;
-		}
-		return returner;
-	}*/
+		return puzzle;
+	}
+	
+	public void setPuzzle(Puzzle puzzle)
+	{
+		this.puzzle = puzzle;
+	}
 }

@@ -7,10 +7,12 @@ public class Puzzle
 	ArrayList<Tile> tiles = new ArrayList<Tile>();
 	protected Tile selectedTile;
 	protected char[][] tileLocations;
+	protected int numMoves;
 	
 	public Puzzle()
 	{
 		tileLocations = new char[4][5];
+		numMoves = 0;
 	}
 	
 	
@@ -91,5 +93,15 @@ public class Puzzle
 			}
 		}
 		return selectedTile;
+	}
+	
+	public int getNumMoves()
+	{
+		return numMoves;
+	}
+	
+	public void setNumMoves(int i)
+	{
+		numMoves = i;
 	}
 }

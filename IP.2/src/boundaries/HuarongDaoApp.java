@@ -29,7 +29,6 @@ public class HuarongDaoApp extends JFrame{
 	protected QuitController quitControl;
 	public JFrame frame;
 	protected BoardBoundary board;
-	protected int numMoves;
 	Puzzle puzzle;
 	private JPanel contents;
 	
@@ -41,7 +40,6 @@ public class HuarongDaoApp extends JFrame{
 		this.board = new BoardBoundary(puzzle);
 		this.puzzleControl = new PuzzleController(puzzle, this);
 		quitControl = new QuitController(this);
-		numMoves = 0; //need to actually get this number from the puzzle object
 		
 		// initialize everything that is drawn to the screen
 		setBounds(200, 200, 1280, 720);
@@ -77,7 +75,8 @@ public class HuarongDaoApp extends JFrame{
 		contents.add(numMovesTitle);
 		
 		
-		JLabel numMovesVarPrint = new JLabel("0"); //need to actually use the numMoves variable from above
+		JLabel numMovesVarPrint = new JLabel(); //need to actually use the numMoves variable from above
+		numMovesVarPrint.setText(String.valueOf(puzzleControl.getPuzzle().getNumMoves()));
 		numMovesVarPrint.setBounds(156, 280, 56, 70);
 		contents.add(numMovesVarPrint);
 		
@@ -88,6 +87,8 @@ public class HuarongDaoApp extends JFrame{
 										@Override
 										public void actionPerformed(ActionEvent e) {
 											puzzleControl.moveTile(puzzle.getSelected(), 'u');
+											numMovesVarPrint.setText(String.valueOf(puzzleControl.getPuzzle().getNumMoves()));
+											contents.repaint();
 											board.repaint();
 										}
 									});
@@ -100,6 +101,8 @@ public class HuarongDaoApp extends JFrame{
 											@Override
 											public void actionPerformed(ActionEvent e) {
 												puzzleControl.moveTile(puzzle.getSelected(), 'l');
+												numMovesVarPrint.setText(String.valueOf(puzzleControl.getPuzzle().getNumMoves()));
+												contents.repaint();
 												board.repaint();
 											}
 										});
@@ -112,6 +115,8 @@ public class HuarongDaoApp extends JFrame{
 										@Override
 										public void actionPerformed(ActionEvent e) {
 											puzzleControl.moveTile(puzzle.getSelected(), 'd');
+											numMovesVarPrint.setText(String.valueOf(puzzleControl.getPuzzle().getNumMoves()));
+											contents.repaint();
 											board.repaint();
 										}
 									});
@@ -124,6 +129,8 @@ public class HuarongDaoApp extends JFrame{
 										@Override
 										public void actionPerformed(ActionEvent e) {
 											puzzleControl.moveTile(puzzle.getSelected(), 'r');
+											numMovesVarPrint.setText(String.valueOf(puzzleControl.getPuzzle().getNumMoves()));
+											contents.repaint();
 											board.repaint();
 										}
 									});
