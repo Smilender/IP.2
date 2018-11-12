@@ -6,10 +6,11 @@ public class Puzzle
 {
 	ArrayList<Tile> tiles = new ArrayList<Tile>();
 	protected Tile selectedTile;
+	protected char[][] tileLocations;
 	
 	public Puzzle()
 	{
-		
+		tileLocations = new char[4][5];
 	}
 	
 	
@@ -35,6 +36,26 @@ public class Puzzle
 		}
 	}
 	
+	public void parseTileLocations()
+	{
+		for (int i = 0; i < 4; i++)
+		{
+			for (int j = 0; j < 5; j++)
+			{
+				tileLocations[i][j] = ' ';
+			}
+		}
+		for (Tile tile: tiles)
+		{
+			for (int i = tile.getXPos(); i < tile.getXPos() + tile.getWidth(); i++)
+			{
+				for (int j = tile.getYPos(); j < tile.getYPos() + tile.getHeight(); j++)
+				{
+					tileLocations[i][j] = '*';
+				}
+			}
+		}
+	}
 	
 	//getters and setters
 	public ArrayList<Tile> getTiles()
@@ -46,15 +67,29 @@ public class Puzzle
 	{
 		tiles = t;
 	}
-	/*
-	public Tile getSelected()
+	
+	public char[][] getTopLeftTileLocations()
 	{
-		return selectedTile;
-	}*/
+		return tileLocations;
+	}
+
 	
 	public void setSelected(Tile t)
 	{
 		selectedTile = t;
 		t.isSelected = true;
+	}
+	
+	public Tile getSelected()
+	{
+		Tile selectedTile = null;
+		for(Tile tile: tiles)
+		{
+			if(tile.isSelected())
+			{
+				selectedTile = tile;
+			}
+		}
+		return selectedTile;
 	}
 }

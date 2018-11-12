@@ -3,6 +3,8 @@ package boundaries;
 import javax.swing.JFrame;
 
 import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -14,6 +16,7 @@ import javax.swing.border.EmptyBorder;
 import controllers.PuzzleController;
 import entities.Puzzle;
 
+@SuppressWarnings({ "serial", "unused" })
 public class HuarongDaoApp extends JFrame{
 
 	public static int BOARD_X_POS = 501;
@@ -62,9 +65,58 @@ public class HuarongDaoApp extends JFrame{
 		numMovesTitle.setBounds(12, 280, 140, 70);
 		contents.add(numMovesTitle);
 		
+		
 		JLabel numMovesVarPrint = new JLabel("0"); //need to actually use the numMoves variable from above
 		numMovesVarPrint.setBounds(156, 280, 56, 70);
 		contents.add(numMovesVarPrint);
+		
+		JButton upButton = new JButton("^");
+		upButton.setBounds(87, 505, 70, 70);
+		upButton.addActionListener(new ActionListener()
+									{
+										@Override
+										public void actionPerformed(ActionEvent e) {
+											puzzleControl.moveTile(puzzle.getSelected(), 'u');
+											board.repaint();
+										}
+									});
+		contents.add(upButton);
+		
+		JButton leftButton = new JButton("<");
+		leftButton.setBounds(12, 580, 70, 70);
+		leftButton.addActionListener(new ActionListener()
+										{
+											@Override
+											public void actionPerformed(ActionEvent e) {
+												puzzleControl.moveTile(puzzle.getSelected(), 'l');
+												board.repaint();
+											}
+										});
+		contents.add(leftButton);
+		
+		JButton downButton = new JButton("v");
+		downButton.setBounds(87, 580, 70, 70);
+		downButton.addActionListener(new ActionListener()
+									{
+										@Override
+										public void actionPerformed(ActionEvent e) {
+											puzzleControl.moveTile(puzzle.getSelected(), 'd');
+											board.repaint();
+										}
+									});
+		contents.add(downButton);
+		
+		JButton rightButton = new JButton(">");
+		rightButton.setBounds(162, 580, 70, 70);
+		rightButton.addActionListener(new ActionListener()
+									{
+										@Override
+										public void actionPerformed(ActionEvent e) {
+											puzzleControl.moveTile(puzzle.getSelected(), 'r');
+											board.repaint();
+										}
+									});
+		contents.add(rightButton);
 		
 		board.setBounds(BOARD_X_POS, BOARD_Y_POS, BOARD_X_SIZE, BOARD_Y_SIZE);
 		contents.add(board);

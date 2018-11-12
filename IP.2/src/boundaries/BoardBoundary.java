@@ -19,10 +19,9 @@ public class BoardBoundary extends JPanel
 	protected static int POSITION_TO_PIXELS = 120; //converts position to be based on 120px
 	protected static int INTERTILE_GAP_SIZE_OFFSET = 10; //modifies the actual size of each tile such that there can be a 10 pixel gap between each piece
 	protected static int INTERTILE_GAP_POSITION_OFFSET = 5; //modifies the actual position of each tile such that the gap in between pieces is even on every side.
-	
-	Tile tempTile;
-	
+
 	Puzzle puzzle;
+	
 	
 	public BoardBoundary(Puzzle puzzle)
 	{
@@ -36,11 +35,12 @@ public class BoardBoundary extends JPanel
 	//	get the selected status of each tile, and determine the color it should be painted accordingly
 	//construct a rectangle for each instance in Tiles, using those Tile attributes, to be printed to the screen.
 	@Override
-	public void paintComponent(Graphics g) {
-		
+	public void paintComponent(Graphics g)
+	{
 		super.paintComponent(g);
 		
-		for(Tile tile: puzzle.getTiles()) {
+		for(Tile tile: puzzle.getTiles())
+		{
 			if (tile.isWinPiece())
 			{
 				if (tile.isSelected())
