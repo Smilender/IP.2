@@ -1,6 +1,7 @@
 package boundaries;
 
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 
 import java.awt.Point;
 import java.awt.event.ActionEvent;
@@ -13,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import controllers.HelpController;
 import controllers.PuzzleController;
 import controllers.QuitController;
 import entities.Puzzle;
@@ -29,7 +31,8 @@ public class HuarongDaoApp extends JFrame{
 	protected QuitController quitControl;
 	public JFrame frame;
 	protected BoardBoundary board;
-	Puzzle puzzle;
+	protected Puzzle puzzle;
+	protected HelpController help;
 	private JPanel contents;
 	
 	
@@ -39,7 +42,8 @@ public class HuarongDaoApp extends JFrame{
 		this.puzzle = puzzle;
 		this.board = new BoardBoundary(puzzle);
 		this.puzzleControl = new PuzzleController(puzzle, this);
-		quitControl = new QuitController(this);
+		this.quitControl = new QuitController(this);
+		this.help = new HelpController(this);
 		
 		// initialize everything that is drawn to the screen
 		setBounds(200, 200, 1280, 720);
@@ -56,6 +60,14 @@ public class HuarongDaoApp extends JFrame{
 		
 		JButton helpButton = new JButton("Help");
 		helpButton.setBounds(12, 101, 200, 70);
+		helpButton.addActionListener(new ActionListener()
+									{
+										@Override
+										public void actionPerformed(ActionEvent e)
+										{
+											help.help();
+										}
+									});
 		contents.add(helpButton);
 		
 		JButton quitButton = new JButton("Quit");
@@ -63,7 +75,8 @@ public class HuarongDaoApp extends JFrame{
 		quitButton.addActionListener(new ActionListener()
 									{
 										@Override
-										public void actionPerformed(ActionEvent e) {
+										public void actionPerformed(ActionEvent e)
+										{
 											quitControl.quit();
 											board.repaint();
 										}
@@ -85,7 +98,8 @@ public class HuarongDaoApp extends JFrame{
 		upButton.addActionListener(new ActionListener()
 									{
 										@Override
-										public void actionPerformed(ActionEvent e) {
+										public void actionPerformed(ActionEvent e)
+										{
 											puzzleControl.moveTile(puzzle.getSelected(), 'u');
 											numMovesVarPrint.setText(String.valueOf(puzzleControl.getPuzzle().getNumMoves()));
 											contents.repaint();
@@ -99,7 +113,8 @@ public class HuarongDaoApp extends JFrame{
 		leftButton.addActionListener(new ActionListener()
 										{
 											@Override
-											public void actionPerformed(ActionEvent e) {
+											public void actionPerformed(ActionEvent e)
+											{
 												puzzleControl.moveTile(puzzle.getSelected(), 'l');
 												numMovesVarPrint.setText(String.valueOf(puzzleControl.getPuzzle().getNumMoves()));
 												contents.repaint();
@@ -113,7 +128,8 @@ public class HuarongDaoApp extends JFrame{
 		downButton.addActionListener(new ActionListener()
 									{
 										@Override
-										public void actionPerformed(ActionEvent e) {
+										public void actionPerformed(ActionEvent e)
+										{
 											puzzleControl.moveTile(puzzle.getSelected(), 'd');
 											numMovesVarPrint.setText(String.valueOf(puzzleControl.getPuzzle().getNumMoves()));
 											contents.repaint();
@@ -127,7 +143,8 @@ public class HuarongDaoApp extends JFrame{
 		rightButton.addActionListener(new ActionListener()
 									{
 										@Override
-										public void actionPerformed(ActionEvent e) {
+										public void actionPerformed(ActionEvent e)
+										{
 											puzzleControl.moveTile(puzzle.getSelected(), 'r');
 											numMovesVarPrint.setText(String.valueOf(puzzleControl.getPuzzle().getNumMoves()));
 											contents.repaint();
@@ -137,6 +154,7 @@ public class HuarongDaoApp extends JFrame{
 		contents.add(rightButton);
 		
 		board.setBounds(BOARD_X_POS, BOARD_Y_POS, BOARD_X_SIZE, BOARD_Y_SIZE);
+		//board.set //this will eventually make sure that the board is in the background
 		contents.add(board);
 		
 		board.addMouseListener(new MouseAdapter()
