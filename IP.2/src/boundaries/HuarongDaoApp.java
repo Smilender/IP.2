@@ -17,6 +17,7 @@ import javax.swing.border.EmptyBorder;
 import controllers.HelpController;
 import controllers.PuzzleController;
 import controllers.QuitController;
+import entities.Model;
 import entities.Puzzle;
 
 @SuppressWarnings({ "serial", "unused" })
@@ -33,17 +34,19 @@ public class HuarongDaoApp extends JFrame{
 	protected BoardBoundary board;
 	protected Puzzle puzzle;
 	protected HelpController help;
+	protected Model model;
 	private JPanel contents;
 	
 	
 	//Constructor
-	public HuarongDaoApp(Puzzle puzzle)
+	public HuarongDaoApp(Puzzle puzzle, Model model)
 	{
 		this.puzzle = puzzle;
 		this.board = new BoardBoundary(puzzle);
 		this.puzzleControl = new PuzzleController(puzzle, this);
 		this.quitControl = new QuitController(this);
 		this.help = new HelpController(this);
+		this.model = model;
 		
 		// initialize everything that is drawn to the screen
 		setBounds(200, 200, 1280, 720);
@@ -54,8 +57,23 @@ public class HuarongDaoApp extends JFrame{
 		contents.setLayout(null);
 		setContentPane(contents);
 		
+		JLabel numMovesVarPrint = new JLabel(); //need to actually use the numMoves variable from above
+		numMovesVarPrint.setText(String.valueOf(puzzleControl.getPuzzle().getNumMoves()));
+		numMovesVarPrint.setBounds(156, 280, 56, 70);
+		contents.add(numMovesVarPrint);
+		
 		JButton resetButton = new JButton("Reset Puzzle");
 		resetButton.setBounds(12, 12, 200, 70);
+		resetButton.addActionListener(new ActionListener()
+									{
+										@Override
+										public void actionPerformed(ActionEvent e)
+										{
+											puzzleControl.resetPuzzle(model);
+											numMovesVarPrint.setText(String.valueOf(puzzleControl.getPuzzle().getNumMoves()));
+											contents.repaint();
+										}
+									});
 		contents.add(resetButton);
 		
 		JButton helpButton = new JButton("Help");
@@ -88,10 +106,7 @@ public class HuarongDaoApp extends JFrame{
 		contents.add(numMovesTitle);
 		
 		
-		JLabel numMovesVarPrint = new JLabel(); //need to actually use the numMoves variable from above
-		numMovesVarPrint.setText(String.valueOf(puzzleControl.getPuzzle().getNumMoves()));
-		numMovesVarPrint.setBounds(156, 280, 56, 70);
-		contents.add(numMovesVarPrint);
+		
 		
 		JButton upButton = new JButton("^");
 		upButton.setBounds(87, 505, 70, 70);

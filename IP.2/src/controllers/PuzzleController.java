@@ -2,7 +2,10 @@ package controllers;
 
 import java.awt.Point;
 
+import javax.swing.JOptionPane;
+
 import boundaries.HuarongDaoApp;
+import entities.Model;
 import entities.Puzzle;
 import entities.Tile;
 
@@ -104,7 +107,10 @@ public class PuzzleController {
 				//win condition
 				if (tile.isWinPiece() && tile.getXPos() == 1 && tile.getYPos() == 3)
 				{
-					//congration!  You done it!
+					JOptionPane.showMessageDialog(app, "You did it in " + String.valueOf(puzzle.getNumMoves()) + " moves!  Congratulations!",
+							"You win!", 
+							JOptionPane.INFORMATION_MESSAGE);
+					
 				} else if ((tile.getYPos() + tile.getHeight() - 1) >= 4) //minus 1 to account for the difference between height starting at 1, and yPos starting at 0.  4 is maximum index for yPos on a 4x5 board.
 				{
 					canMove = false;
@@ -163,6 +169,14 @@ public class PuzzleController {
 				System.out.println("moveTile(Tile tile, char direction); invalid direction!");
 				break;
 		}
+	}
+	
+	//clears the board, and puts each tile in it's default location, based on the input model
+	public void resetPuzzle(Model model)
+	{
+		puzzle.setNumMoves(0);
+		puzzle.getTiles().clear();
+		model.initDefault();
 	}
 	
 	//getters and setters

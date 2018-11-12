@@ -1,7 +1,5 @@
 package main;
 
-import java.awt.EventQueue;
-
 import boundaries.HuarongDaoApp;
 import entities.Model;
 import entities.Puzzle;
@@ -13,7 +11,7 @@ public class Main
 		Model model = new Model();
 		model.initDefault();
 		Puzzle puzzle = model.getPuzzle();
-		HuarongDaoApp app = new HuarongDaoApp(puzzle);
+		HuarongDaoApp app = new HuarongDaoApp(puzzle, model);
 		
 		app.setVisible(true);
 	}
