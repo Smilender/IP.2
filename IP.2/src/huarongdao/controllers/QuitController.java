@@ -1,8 +1,8 @@
-package controllers;
+package huarongdao.controllers;
 
 import javax.swing.JOptionPane;
 
-import boundaries.HuarongDaoApp;
+import huarongdao.boundaries.HuarongDaoApp;
 
 
 //Controller for the quitting of the game

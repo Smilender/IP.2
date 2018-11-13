@@ -1,9 +1,9 @@
-package boundaries;
+package huarongdao.boundaries;
 
 import javax.swing.JPanel;
 
-import entities.Puzzle;
-import entities.Tile;
+import huarongdao.entities.Puzzle;
+import huarongdao.entities.Tile;
 
 import java.awt.Color;
 import java.awt.Graphics;

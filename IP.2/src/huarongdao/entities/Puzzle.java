@@ -1,4 +1,4 @@
-package entities;
+package huarongdao.entities;
 
 import java.util.ArrayList;
 
@@ -70,7 +70,7 @@ public class Puzzle
 		tiles = t;
 	}
 	
-	public char[][] getTopLeftTileLocations()
+	public char[][] getTileLocations()
 	{
 		return tileLocations;
 	}

@@ -1,4 +1,4 @@
-package entities;
+package huarongdao.entities;
 
 public class Tile
 {

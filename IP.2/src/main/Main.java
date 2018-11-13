@@ -1,8 +1,8 @@
 package main;
 
-import boundaries.HuarongDaoApp;
-import entities.Model;
-import entities.Puzzle;
+import huarongdao.boundaries.HuarongDaoApp;
+import huarongdao.entities.Model;
+import huarongdao.entities.Puzzle;
 
 public class Main
 {

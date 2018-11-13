@@ -1,13 +1,13 @@
-package controllers;
+package huarongdao.controllers;
 
 import java.awt.Point;
 
 import javax.swing.JOptionPane;
 
-import boundaries.HuarongDaoApp;
-import entities.Model;
-import entities.Puzzle;
-import entities.Tile;
+import huarongdao.boundaries.HuarongDaoApp;
+import huarongdao.entities.Model;
+import huarongdao.entities.Puzzle;
+import huarongdao.entities.Tile;
 
 public class PuzzleController {
 
@@ -56,7 +56,7 @@ public class PuzzleController {
 				{
 					for(int i = 0; i < tile.getWidth(); i++)
 					{
-						if (puzzle.getTopLeftTileLocations()[tile.getXPos() + i][tile.getYPos() - 1] == '*')
+						if (puzzle.getTileLocations()[tile.getXPos() + i][tile.getYPos() - 1] == '*')
 						{
 							canMove = false;
 							break; //could maybe cause problems
@@ -84,7 +84,7 @@ public class PuzzleController {
 				{
 					for(int i = 0; i < tile.getHeight(); i++)
 					{
-						if (puzzle.getTopLeftTileLocations()[tile.getXPos() - 1][tile.getYPos() + i] == '*')
+						if (puzzle.getTileLocations()[tile.getXPos() - 1][tile.getYPos() + i] == '*')
 						{
 							canMove = false;
 							break; //could maybe cause problems
@@ -119,7 +119,7 @@ public class PuzzleController {
 				{
 					for(int i = 0; i < tile.getWidth(); i++)
 					{
-						if (puzzle.getTopLeftTileLocations()[tile.getXPos() + i][tile.getYPos() + tile.getHeight()] == '*')
+						if (puzzle.getTileLocations()[tile.getXPos() + i][tile.getYPos() + tile.getHeight()] == '*')
 						{
 							canMove = false;
 							break; //could maybe cause problems
@@ -147,7 +147,7 @@ public class PuzzleController {
 				{
 					for(int i = 0; i < tile.getHeight(); i++)
 					{
-						if (puzzle.getTopLeftTileLocations()[tile.getXPos() + tile.getWidth()][tile.getYPos() + i] == '*')
+						if (puzzle.getTileLocations()[tile.getXPos() + tile.getWidth()][tile.getYPos() + i] == '*')
 						{
 							canMove = false;
 							break; //could maybe cause problems

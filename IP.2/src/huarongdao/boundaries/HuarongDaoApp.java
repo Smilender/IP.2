@@ -1,4 +1,4 @@
-package boundaries;
+package huarongdao.boundaries;
 
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
@@ -14,11 +14,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import controllers.HelpController;
-import controllers.PuzzleController;
-import controllers.QuitController;
-import entities.Model;
-import entities.Puzzle;
+import huarongdao.controllers.HelpController;
+import huarongdao.controllers.PuzzleController;
+import huarongdao.controllers.QuitController;
+import huarongdao.entities.Model;
+import huarongdao.entities.Puzzle;
 
 @SuppressWarnings({ "serial", "unused" })
 public class HuarongDaoApp extends JFrame{
