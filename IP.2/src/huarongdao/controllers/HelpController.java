@@ -21,6 +21,5 @@ public class HelpController
 											+ "the bottom-left-hand corner of the screen to move each block the appropriate direction", 
 											"Help", 
 											JOptionPane.INFORMATION_MESSAGE);
-		
 	}
 }

@@ -31,6 +31,7 @@ public class PuzzleController {
 					&& (point.getY() < (tile.getYPos()*app.getBoard().getPOSITION_TO_PIXELS()) + (tile.getHeight()*app.getBoard().getSIZE_TO_PIXELS() - app.getBoard().getINTERTILE_GAP_POSITION_OFFSET())))
 			{
 				tile.select();
+				puzzle.setSelected(tile);
 				break;
 			}
 		}
@@ -71,7 +72,6 @@ public class PuzzleController {
 				{
 					tile.setYPos(tile.getYPos() - 1);
 					puzzle.setNumMoves(puzzle.getNumMoves() + 1);
-					System.out.println(puzzle.getNumMoves());
 				}
 				break;
 			//direction left
@@ -99,7 +99,6 @@ public class PuzzleController {
 				{
 					tile.setXPos(tile.getXPos() - 1);
 					puzzle.setNumMoves(puzzle.getNumMoves() + 1);
-					System.out.println(puzzle.getNumMoves());
 				}
 				break;
 			//direction down
@@ -134,7 +133,6 @@ public class PuzzleController {
 				{
 					tile.setYPos(tile.getYPos() + 1);
 					puzzle.setNumMoves(puzzle.getNumMoves() + 1);
-					System.out.println(puzzle.getNumMoves());
 				}
 				break;
 			//direction right
@@ -162,7 +160,6 @@ public class PuzzleController {
 				{
 					tile.setXPos(tile.getXPos() + 1);
 					puzzle.setNumMoves(puzzle.getNumMoves() + 1);
-					System.out.println(puzzle.getNumMoves());
 				}
 				break;
 			default:
